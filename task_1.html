@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обчислення площі трикутника</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            margin: 10px;
+            padding: 5px;
+        }
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Обчислення площі прямокутного трикутника</h2>
+
+    <label for="base">Введіть довжину основи:</label>
+    <input type="number" id="base" min="0" max="20" required><br>
+
+    <label for="height">Введіть довжину висоти:</label>
+    <input type="number" id="height" min="0" max="20" required><br>
+
+    <button onclick="calculateArea()">Обчислити площу</button>
+
+    <h3>Результат: <span id="result">-</span></h3>
+
+    <script>
+        function calculateArea() {
+            let base = parseFloat(document.getElementById('base').value);
+            let height = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(base) || isNaN(height) || base < 0 || height < 0 || base > 20 || height > 20) {
+                alert('Будь ласка, введіть коректні значення (від 0 до 20).');
+                return;
+            }
+
+            let area = (base * height) / 2;
+            document.getElementById('result').textContent = area.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html> <html lang="uk"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Анкета перекладача</title> <style> body { font-family: Arial, sans-serif; text-align: center; margin: 50px; } input { margin: 10px; } button { padding: 10px; cursor: pointer; } </style> </head> <body> <h2>Анкета перекладача</h2> <p>Оберіть мови, якими ви володієте:</p> <form id="translatorForm"> <label><input type="checkbox" value="1000"> Українська (1000 грн)</label><br> <label><input type="checkbox" value="800"> Англійська (800 грн)</label><br> <label><input type="checkbox" value="700"> Німецька (700 грн)</label><br> <label><input type="checkbox" value="600"> Французька (600 грн)</label><br> <label><input type="checkbox" value="500"> Іспанська (500 грн)</label><br> </form> <button onclick="calculateReward()">Розрахувати винагороду</button> <h3>Ваша винагорода: <span id="reward">0</span> грн</h3> <script> function calculateReward() { let checkboxes = document.querySelectorAll('#translatorForm input[type="checkbox"]:checked'); let total = 0; checkboxes.forEach(checkbox => { total += parseInt(checkbox.value); }); document.getElementById('reward').textContent = total; } </script> </body> </html>
